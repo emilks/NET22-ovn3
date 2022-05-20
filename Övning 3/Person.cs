@@ -32,13 +32,27 @@ namespace Övning_3
         public string FName
         {
             get { return fName; }
-            set { fName = value; }
+            set {
+                if (value.Length < 2 || value.Length > 10)
+                {
+                    Console.WriteLine("Förnamn måste vara mellan 2 och 10 bokstäver");
+                    throw new ArgumentException();
+                }
+                fName = value; 
+            }
         }
 
         public string LName
         {
             get { return lName; }
-            set { lName = value; }
+            set {
+                if (value.Length < 3 || value.Length > 15)
+                {
+                    Console.WriteLine("Efternamn måste vara mellan 3 och 15 bokstäver");
+                    throw new ArgumentException();
+                }
+                lName = value; 
+            }
         }
 
         public double Height
@@ -55,18 +69,8 @@ namespace Övning_3
 
         public Person(string newFName, string newLName)
         {
-            if(newFName.Length < 2 || newFName.Length > 10)
-            {
-                Console.WriteLine("Förnamn måste vara mellan 2 och 10 bokstäver");
-                throw new ArgumentException();
-            }
-            if (newLName.Length < 3 || newLName.Length > 15)
-            {
-                Console.WriteLine("Efternamn måste vara mellan 3 och 15 bokstäver");
-                throw new ArgumentException();
-            }
-            fName = newFName;
-            lName = newLName;
+            FName = newFName;
+            LName = newLName;
         }
 
     }
